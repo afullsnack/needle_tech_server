@@ -1,6 +1,6 @@
 # Custom Build Example
 
-This directory is a brief example of using a Custom Build script that can be deployed with Vercel and zero configuration.
+This repo is the server for the needle tech mobile apps
 
 ## Deploy Your Own
 
