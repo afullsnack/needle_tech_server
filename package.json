@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "build": "rm -rf public && mkdir public && echo 'Custom Build' > ./public/index.html"
+    "build": "vercel --prod && deploy",
+    "deploy": "vercel deploy"
+
   },
   "dependencies": {
     "config": "3.3.1",
