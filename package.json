@@ -1,9 +1,5 @@
 {
-  "scripts": {
-    "build": "vercel --prod && deploy",
-    "deploy": "vercel deploy"
-
-  },
+  
   "dependencies": {
     "config": "3.3.1",
     "mongodb": "^4.1.2",
