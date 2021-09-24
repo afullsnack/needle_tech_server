@@ -1,0 +1,6 @@
+{
+  "env": {
+    "MONGODB_URI": "mongodb+srv://dgn_fly:ht20zp8oCvGg72Ys@cluster0.a8pky.mongodb.net/field_app?retryWrites=true&w=majority",
+    "MONGODB_DB": "field_app"
+  }
+}

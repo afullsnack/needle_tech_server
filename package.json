@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "build": "rm -rf public && mkdir public && echo 'Custom Build' > ./public/index.html"
+  },
+  "dependencies": {
+    "config": "3.3.1",
+    "mongodb": "^4.1.2",
+    "mongoose": "^6.0.7",
+    "safe-compare": "^1.1.4",
+    "static-auth": "^2.0.0"
+  }
+}
