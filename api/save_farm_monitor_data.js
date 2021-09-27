@@ -1,5 +1,6 @@
+import { connectDB } from "../lib/db";
 import FarmMonitor from "../models/FarmMonitor";
-// connectDB();
+connectDB();
 
 // Example with Vercel
 export default async (req, res) => {
