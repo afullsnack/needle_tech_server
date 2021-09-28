@@ -14,6 +14,7 @@ try {
     plantingActivities: { type: [String] },
     isSeedPlanted: String,
     plantingDate: String,
+    sizeOfLand: String,
     typeOfSeed: String,
     quantityOfSeed: String,
     seedImage: String,
