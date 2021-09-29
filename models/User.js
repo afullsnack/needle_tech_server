@@ -16,6 +16,7 @@ try {
       required: [true, "Please add a valid email account"],
     },
     profilePic: { type: String, required: false },
+    is_admin: { type: Boolean, default: false },
   });
   Enum = mongoose.models.Enum || mongoose.model("Enumerator", EnumeratorSchema);
 } catch (err) {

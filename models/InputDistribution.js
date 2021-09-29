@@ -4,7 +4,7 @@ let InputDistribution;
 try {
   connectDB();
   const InputDistSchema = new mongoose.Schema({
-    dateEntered: { type: Date, default: Date.now() },
+    date_entered: { type: Date, default: Date.now() },
     enumeratorName: String,
     enumeratorContact: String,
     state: String,

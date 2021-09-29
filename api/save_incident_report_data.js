@@ -32,7 +32,12 @@ export default async (req, res) => {
       state,
       lga,
       town,
-      affected_hecters
+      incident_type,
+      incident_date,
+      incident_details,
+      affected_location,
+      affected_hecters,
+      incident_image
     );
 
     let incidentReport = new IncidentReport({
