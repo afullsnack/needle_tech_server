@@ -25,6 +25,7 @@ try {
     date_of_delivery: String,
     any_other_info: String,
     distribution_image: String,
+    verified: { type: Boolean, default: false },
   });
   Inventory =
     mongoose.models.Inventory || mongoose.model("Inventory", InventorySchema);

@@ -12,6 +12,7 @@ try {
     type_of_input: { type: [String] },
     input_unit: String,
     number_of_input_recieved: String,
+    verified: { type: Boolean, default: false },
   });
   EvacInventory =
     mongoose.models.EvacInventory ||

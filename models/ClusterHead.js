@@ -22,6 +22,7 @@ try {
     lat: String,
     long: String,
     is_new_entry_or_redo: String,
+    verified: { type: Boolean, default: false },
   });
   ClusterHead =
     mongoose.models.ClusterHead ||

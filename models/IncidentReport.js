@@ -16,6 +16,7 @@ try {
     affected_location: String,
     affected_hecters: String,
     incident_image: String,
+    verified: { type: Boolean, default: false },
   });
   IncidentReport =
     mongoose.models.IncidentReport ||
