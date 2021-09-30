@@ -1,10 +1,10 @@
-import { connectDB } from "../../lib/db";
-import ClusterHead from "../../models/ClusterHead";
-import EvacInventory from "../../models/EvacInventory";
-import FarmMonitor from "../../models/FarmMonitor";
-import IncidentReport from "../../models/IncidentReport";
-import InputDistribution from "../../models/InputDistribution";
-import InputInventory from "../../models/InputInventory";
+import { connectDB } from "../lib/db";
+import ClusterHead from "../models/ClusterHead";
+import EvacInventory from "../models/EvacInventory";
+import FarmMonitor from "../models/FarmMonitor";
+import IncidentReport from "../models/IncidentReport";
+import InputDistribution from "../models/InputDistribution";
+import InputInventory from "../models/InputInventory";
 connectDB();
 
 // Example with Vercel

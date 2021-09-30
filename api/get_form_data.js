@@ -1,10 +1,10 @@
-import { connectDB } from "../../lib/db";
-import ClusterHead from "../../models/ClusterHead";
-import EvacInventory from "../../models/EvacInventory";
-import FarmMonitor from "../../models/FarmMonitor";
-import IncidentReport from "../../models/IncidentReport";
-import InputDistribution from "../../models/InputDistribution";
-import InputInventory from "../../models/InputInventory";
+import { connectDB } from "../lib/db";
+import ClusterHead from "../models/ClusterHead";
+import EvacInventory from "../models/EvacInventory";
+import FarmMonitor from "../models/FarmMonitor";
+import IncidentReport from "../models/IncidentReport";
+import InputDistribution from "../models/InputDistribution";
+import InputInventory from "../models/InputInventory";
 connectDB();
 
 // Example with Vercel
@@ -16,7 +16,7 @@ export default async (req, res) => {
     });
 
   try {
-    var { type } = req.params;
+    var { type } = req.query;
 
     switch (type) {
       case "cluster_head":
@@ -25,7 +25,7 @@ export default async (req, res) => {
           res.send({
             error: false,
             status: found ? "success" : "failed",
-            message: found ? "Found user" : "Failed to find user",
+            message: found ? "Found data" : "Failed to find data",
             data: err || found,
           });
         });
@@ -36,7 +36,7 @@ export default async (req, res) => {
           res.send({
             error: false,
             status: found ? "success" : "failed",
-            message: found ? "Found user" : "Failed to find user",
+            message: found ? "Found data" : "Failed to find data",
             data: err || found,
           });
         });
@@ -47,7 +47,7 @@ export default async (req, res) => {
           res.send({
             error: false,
             status: found ? "success" : "failed",
-            message: found ? "Found user" : "Failed to find user",
+            message: found ? "Found data" : "Failed to find data",
             data: err || found,
           });
         });
@@ -58,7 +58,7 @@ export default async (req, res) => {
           res.send({
             error: false,
             status: found ? "success" : "failed",
-            message: found ? "Found user" : "Failed to find user",
+            message: found ? "Found data" : "Failed to find data",
             data: err || found,
           });
         });
@@ -69,7 +69,7 @@ export default async (req, res) => {
           res.send({
             error: false,
             status: found ? "success" : "failed",
-            message: found ? "Found user" : "Failed to find user",
+            message: found ? "Found data" : "Failed to find data",
             data: err || found,
           });
         });
@@ -80,7 +80,7 @@ export default async (req, res) => {
           res.send({
             error: false,
             status: found ? "success" : "failed",
-            message: found ? "Found user" : "Failed to find user",
+            message: found ? "Found data" : "Failed to find data",
             data: err || found,
           });
         });
