@@ -4,7 +4,6 @@ node_modules
 # Environment Variables
 .env
 .env.build
-.env.local
 .vercel
 
 #tests
