@@ -1,7 +1,3 @@
 {
-  "env": {
-    "MONGODB_URI": "mongodb+srv://dgn_fly:SRLbvpvbZxz9CR0l@cluster0.dudax.mongodb.net/field_app?retryWrites=true&w=majority",
-    "MONGODB_DB": "field_app",
-    "MONGODB_DEV_URI": "mongodb://remsys.com.ng:27017"
-  }
+  
 }
