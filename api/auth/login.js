@@ -10,6 +10,8 @@ export default async (req, res) => {
       message: "Wrong HTTP method for the route",
     });
 
+    // 
+
   try {
     console.log(req.body);
     const { email, pass } = req.body;

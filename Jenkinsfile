@@ -11,7 +11,7 @@ pipeline {
                 sh 'sudo systemctl restart field-app'
             }
         }
-        stage('Restart MySQL Service'){
+        stage('Restart Mongodb Service'){
             steps{
                 sh 'sudo systemctl restart mongod'
             }
