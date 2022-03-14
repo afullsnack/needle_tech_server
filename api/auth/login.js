@@ -22,6 +22,15 @@ export default async (req, res) => {
     // client.close();
     Enum.findOne({ email: email }, (err, found) => {
       // console.log(err, found);
+
+      if (found?.password !== pass) {
+        return res.send({
+          error: true,
+          status: "failed",
+          message: "Incorrect password",
+          data: null,
+        });
+      }
       res.send({
         error: false,
         status: found ? "success" : "failed",
