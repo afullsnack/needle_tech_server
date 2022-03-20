@@ -15,38 +15,85 @@ export default async (req, res) => {
   try {
     console.log(req.body);
     const { email, pass } = req.body;
-    // const client = await clientPromise;
-    // const db = client.db();
-    // const enumeratorCollection = db.collection("enumerators");
-    // const result = await enumeratorCollection.findOne({
-    //   email: email,
-    // });
-    // client.close();
-    Enum.findOne({ email: email }, (err, found) => {
-      // console.log(err, found);
+    email = email.trim();
+    pass = pass.trim();
 
-      if (found?.password !== pass) {
-        return res.send({
-          error: true,
-          status: "failed",
-          message: "Incorrect password",
-          data: null,
-        });
-      }
-      res.send({
-        error: false,
-        status: found ? "success" : "failed",
-        message: found ? "Found user" : "Failed to find user",
-        data: err || found,
+    if (email == "" || pass == "") {
+      res.json({
+        status: "failed",
+        error: true,
+        message: "Fields cannot be empty",
+        data: null,
       });
-    });
-    // console.log("result from db", result);
+    } else {
+      await Enum.find({ email })
+        .then(async (data) => {
+          if (data.length) {
+            //User exists
 
-    // res.end({
-    //   error: true,
-    //   status: "failed",
-    //   message: "Restricted area, please login",
-    //   data: null,
+            const hashedPassword = data[0].password;
+            await bcrypt
+              .compare(pass, hashedPassword)
+              .then((result) => {
+                if (result) {
+                  //Password match
+                  res.json({
+                    status: "success",
+                    error: false,
+                    message: "Login Successful",
+                    data: data[0],
+                  });
+                } else {
+                  res.json({
+                    status: "failed",
+                    error: true,
+                    message: "Password Incorrect",
+                  });
+                }
+              })
+              .catch((err) => {
+                console.log(err, "Error occurred");
+                res.json({
+                  status: "failed",
+                  error: true,
+                  message: "An error occurred while comparing passwords",
+                });
+              });
+          } else {
+            res.json({
+              status: "failed",
+              error: true,
+              message: "Invalid credentials entered",
+            });
+          }
+        })
+        .catch((err) => {
+          console.log(err, "Error occurred");
+          res.json({
+            status: "failed",
+            error: true,
+            message: "An error occurred while checking for existing user",
+          });
+        });
+    }
+
+    // Enum.findOne({ email: email }, (err, found) => {
+    //   // console.log(err, found);
+
+    //   if (found?.password !== pass) {
+    //     return res.send({
+    //       error: true,
+    //       status: "failed",
+    //       message: "Incorrect password",
+    //       data: null,
+    //     });
+    //   }
+    //   res.send({
+    //     error: false,
+    //     status: found ? "success" : "failed",
+    //     message: found ? "Found user" : "Failed to find user",
+    //     data: err || found,
+    //   });
     // });
   } catch (err) {
     res.send({
