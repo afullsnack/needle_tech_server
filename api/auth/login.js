@@ -1,3 +1,4 @@
+import { compare } from "bcrypt";
 import { connectDB } from "../../lib/db";
 import Enum from "../../models/User";
 connectDB();
@@ -10,11 +11,11 @@ export default async (req, res) => {
       message: "Wrong HTTP method for the route",
     });
 
-    // 
+  //
 
   try {
     console.log(req.body);
-    const { email, pass } = req.body;
+    var { email, pass } = req.body;
     email = email.trim();
     pass = pass.trim();
 
@@ -26,14 +27,14 @@ export default async (req, res) => {
         data: null,
       });
     } else {
+      console.log(email, pass);
       await Enum.find({ email })
         .then(async (data) => {
           if (data.length) {
             //User exists
 
             const hashedPassword = data[0].password;
-            await bcrypt
-              .compare(pass, hashedPassword)
+            await compare(pass, hashedPassword)
               .then((result) => {
                 if (result) {
                   //Password match

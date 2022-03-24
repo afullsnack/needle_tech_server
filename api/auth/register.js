@@ -13,7 +13,7 @@ export default async (req, res) => {
 
   try {
     // console.log(req.body);
-    const { firstname, lastname, phone, email, password, profilePic } =
+    var { firstname, lastname, phone, email, password, profilePic, is_admin } =
       req.body;
     // const client = await clientPromise;
     // const db = client.db();
@@ -46,13 +46,13 @@ export default async (req, res) => {
         error: true,
         message: "Empty input fields!",
       });
-    } else if (!/^[a-zA-Z ]*$/.test(firstname)) {
+    } else if (!/^[a-z A-Z]*$/.test(firstname)) {
       res.json({
         status: "failed",
         error: true,
         message: "Invalid First Name entered",
       });
-    } else if (!/^[a-zA-Z ]*$/.test(lastname)) {
+    } else if (!/^[a-z A-Z]*$/.test(lastname)) {
       res.json({
         status: "failed",
         error: true,
@@ -64,7 +64,7 @@ export default async (req, res) => {
         error: true,
         message: "Invalid email entered",
       });
-    } else if (!/^[0-9]*$/.test(PN)) {
+    } else if (!/^[0-9]*$/.test(phone)) {
       res.json({
         status: "failed",
         error: true,
@@ -76,6 +76,12 @@ export default async (req, res) => {
         error: true,
         message: "Password is too short",
       });
+      // } else if ((await Enum.find({is_admin: true})).length == 4 ) {
+      //   res.json({
+      //     status: "failed",
+      //     error: true,
+      //     message: "Max number of allowed admins reached",
+      //   });
     } else {
       //Checking if user already exists
       Enum.find({ email })
@@ -93,7 +99,7 @@ export default async (req, res) => {
             // Password handling
             const saltRounds = 10;
             await hash(password, saltRounds)
-              .then((hashedPassword) => {
+              .then(async (hashedPassword) => {
                 let enumerator = new Enum({
                   firstname,
                   lastname,
@@ -101,6 +107,7 @@ export default async (req, res) => {
                   email,
                   password: hashedPassword,
                   profilePic,
+                  is_admin,
                 });
 
                 await enumerator
